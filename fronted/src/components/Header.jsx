@@ -1,33 +1,3 @@
-// import { Nav, Navbar, Container } from 'react-bootstrap';
-// import { FaShoppingCart, FaUser } from 'react-icons/fa';
-
-// const Header = () => {
-//   return (
-//     <header>
-//       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
-//         <Container>
-//           <Navbar.Brand href='/'>EnglishEducation</Navbar.Brand>
-//           <Navbar.Toggle aria-controls='basic-navbar-nav' />
-//           <Navbar.Collapse id='basic-navbar-nav'>
-//             <Nav className='ms-auto'>
-//               <Nav.Link href='/cart'>
-//                 <FaShoppingCart />
-//                 Cart
-//               </Nav.Link>
-//               <Nav.Link>
-//                 <FaUser />
-//                 Sign In
-//               </Nav.Link>
-//             </Nav>
-//           </Navbar.Collapse>
-//         </Container>
-//       </Navbar>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
 import {
   Navbar,
   Container,
@@ -38,6 +8,8 @@ import {
 } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import logo from '../assets/logo.png';
+import { LinkContainer } from 'react-router-bootstrap';
+
 const Header = () => {
   return (
     <header>
@@ -45,14 +17,16 @@ const Header = () => {
       <Navbar expand='lg' className='bg-body-tertiary' variant='light'>
         <Container fluid>
           {/* Brand */}
-          <Navbar.Brand href='/'>
-            EnglishEducation
-            <img
-              src={logo}
-              alt='EnglishEducation'
-              className='navbar-logo me-2'
-            ></img>
-          </Navbar.Brand>
+          <LinkContainer to='/'>
+            <Navbar.Brand>
+              EnglishEducation
+              <img
+                src={logo}
+                alt='EnglishEducation'
+                className='navbar-logo me-2'
+              ></img>
+            </Navbar.Brand>
+          </LinkContainer>
 
           {/* Mobile toggle button */}
           <Navbar.Toggle aria-controls='navbarScroll' />
@@ -67,12 +41,16 @@ const Header = () => {
             >
               {/* Icons on the far right */}
               <Nav>
-                <Nav.Link href='/cart'>
-                  <FaShoppingCart /> Cart
-                </Nav.Link>
-                <Nav.Link href='/login'>
-                  <FaUser /> Sign In
-                </Nav.Link>
+                <LinkContainer to='/cart'>
+                  <Nav.Link>
+                    <FaShoppingCart /> Cart
+                  </Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/login'>
+                  <Nav.Link>
+                    <FaUser /> Sign In
+                  </Nav.Link>
+                </LinkContainer>
               </Nav>
 
               {/* Disabled link */}
